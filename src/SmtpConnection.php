@@ -701,6 +701,9 @@ class SmtpConnection
 
         foreach ($lines as $n => $s) {
             //First 4 chars contain response code followed by - or space
+            if (strlen(trim($s)) < 4) {
+                continue;
+            }
             $s = trim(substr($s, 4));
             if (empty($s)) {
                 continue;
